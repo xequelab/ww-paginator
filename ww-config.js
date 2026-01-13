@@ -183,6 +183,34 @@ export default {
 
 
         // === LAYOUT STYLES ===
+        alignment: {
+            label: {
+                en: 'Alignment',
+                fr: 'Alignement',
+            },
+            type: 'TextRadioGroup',
+            section: 'style',
+            defaultValue: 'center',
+            options: {
+                choices: [
+                    {
+                        value: 'flex-start',
+                        title: 'Left',
+                        icon: 'align-left',
+                    },
+                    {
+                        value: 'center',
+                        title: 'Center',
+                        icon: 'align-center',
+                    },
+                    {
+                        value: 'flex-end',
+                        title: 'Right',
+                        icon: 'align-right',
+                    },
+                ],
+            },
+        },
         gap: {
             label: { en: 'Gap between elements' },
             type: 'Length',

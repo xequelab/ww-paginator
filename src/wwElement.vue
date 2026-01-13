@@ -232,7 +232,8 @@ export default {
         const containerStyle = computed(() => ({
             '--gap': props.content.gap || '8px',
             '--button-padding': props.content.buttonPadding || '8px 12px',
-            '--border-radius': props.content.borderRadius || '6px'
+            '--border-radius': props.content.borderRadius || '6px',
+            '--alignment': props.content.alignment || 'center'
         }));
 
         const buttonStyle = computed(() => ({
@@ -243,10 +244,10 @@ export default {
         }));
 
         const activeButtonStyle = computed(() => ({
-            backgroundColor: props.content.activeButtonBackground || '#3b82f6',
-            color: props.content.activeButtonColor || '#ffffff',
-            borderColor: props.content.activeButtonBorder || '#3b82f6',
-            fontSize: props.content.buttonFontSize || '14px'
+            backgroundColor: `${props.content.activeButtonBackground || '#3b82f6'} !important`,
+            color: `${props.content.activeButtonColor || '#ffffff'} !important`,
+            borderColor: `${props.content.activeButtonBorder || '#3b82f6'} !important`,
+            fontSize: props.content.buttonFontSize || '13px'
         }));
 
         const selectorStyle = computed(() => ({
@@ -359,7 +360,7 @@ export default {
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
-    justify-content: center !important;
+    justify-content: var(--alignment, center) !important;
     flex-wrap: wrap !important;
     gap: 16px !important;
     width: 100% !important;
