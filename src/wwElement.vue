@@ -1,5 +1,5 @@
 <template>
-    <nav class="ww-paginator" role="navigation" :style="containerStyle">
+    <div class="ww-paginator-wrapper">
         <!-- Items per page selector -->
         <div v-if="content.showItemsPerPageSelector" class="items-per-page-selector">
             <span class="selector-label">{{ itemsPerPageLabel }}</span>
@@ -17,7 +17,7 @@
         </div>
 
         <!-- Pagination controls -->
-        <div class="pagination-controls">
+        <nav class="ww-paginator" role="navigation" :style="containerStyle">
             <!-- Previous button -->
             <button
                 class="pagination-button pagination-arrow"
@@ -28,34 +28,33 @@
                 aria-label="Previous page"
             >
                 <wwObject v-if="content.paginatorPrev" v-bind="content.paginatorPrev" />
+                <span v-else>&lsaquo;</span>
             </button>
 
             <!-- Page numbers -->
-            <div class="pagination-numbers">
-                <button
-                    v-for="(nav, index) in navigation"
-                    :key="index"
-                    :class="[
-                        'pagination-button',
-                        'pagination-number',
-                        { active: nav.index === currentPage, separator: nav.index === -1 }
-                    ]"
-                    :disabled="nav.index === -1 || isEditing"
-                    @click="goTo(nav.index)"
-                    :style="nav.index === currentPage ? activeButtonStyle : buttonStyle"
-                    :aria-current="nav.index === currentPage ? 'page' : undefined"
-                    :aria-label="nav.index === -1 ? undefined : `Go to page ${nav.index + 1}`"
-                >
-                    <wwLayoutItemContext v-if="content.paginatorText" is-repeat :index="index">
-                        <wwElement
-                            v-bind="content.paginatorText"
-                            :ww-props="{ text: nav.label }"
-                            :states="nav.states"
-                        />
-                    </wwLayoutItemContext>
-                    <span v-else>{{ nav.label }}</span>
-                </button>
-            </div>
+            <button
+                v-for="(nav, index) in navigation"
+                :key="index"
+                :class="[
+                    'pagination-button',
+                    'pagination-number',
+                    { active: nav.index === currentPage, separator: nav.index === -1 }
+                ]"
+                :disabled="nav.index === -1 || isEditing"
+                @click="goTo(nav.index)"
+                :style="nav.index === currentPage ? activeButtonStyle : buttonStyle"
+                :aria-current="nav.index === currentPage ? 'page' : undefined"
+                :aria-label="nav.index === -1 ? undefined : `Go to page ${nav.index + 1}`"
+            >
+                <wwLayoutItemContext v-if="content.paginatorText" is-repeat :index="index">
+                    <wwElement
+                        v-bind="content.paginatorText"
+                        :ww-props="{ text: nav.label }"
+                        :states="nav.states"
+                    />
+                </wwLayoutItemContext>
+                <span v-else>{{ nav.label }}</span>
+            </button>
 
             <!-- Next button -->
             <button
@@ -67,14 +66,15 @@
                 aria-label="Next page"
             >
                 <wwObject v-if="content.paginatorNext" v-bind="content.paginatorNext" />
+                <span v-else>&rsaquo;</span>
             </button>
-        </div>
+        </nav>
 
         <!-- Info text -->
         <div v-if="content.showInfoText" class="pagination-info" :style="infoTextStyle">
             {{ paginationInfoText }}
         </div>
-    </nav>
+    </div>
 </template>
 
 <script>
@@ -360,11 +360,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.ww-paginator {
+.ww-paginator-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--gap, 16px);
+    gap: 16px;
     width: 100%;
 }
 
@@ -409,15 +409,11 @@ export default {
     }
 }
 
-.pagination-controls {
+.ww-paginator {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    gap: 4px;
-}
-
-.pagination-numbers {
-    display: flex;
-    align-items: center;
+    justify-content: center;
     gap: 4px;
 }
 
