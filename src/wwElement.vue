@@ -244,9 +244,9 @@ export default {
         }));
 
         const activeButtonStyle = computed(() => ({
-            backgroundColor: `${props.content.activeButtonBackground || '#3b82f6'} !important`,
-            color: `${props.content.activeButtonColor || '#ffffff'} !important`,
-            borderColor: `${props.content.activeButtonBorder || '#3b82f6'} !important`,
+            backgroundColor: props.content.activeButtonBackground || '#3b82f6',
+            color: props.content.activeButtonColor || '#ffffff',
+            borderColor: props.content.activeButtonBorder || '#3b82f6',
             fontSize: props.content.buttonFontSize || '13px'
         }));
 
@@ -479,8 +479,8 @@ export default {
     }
 
     &.active {
-        font-weight: 600;
-        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        font-weight: 600 !important;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
     }
 
     &.pagination-arrow {
