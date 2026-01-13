@@ -27,8 +27,9 @@
                 :style="buttonStyle"
                 aria-label="Previous page"
             >
-                <wwObject v-if="content.paginatorPrev" v-bind="content.paginatorPrev" />
-                <span v-else>&lsaquo;</span>
+                <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 1L1 7L7 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
             </button>
 
             <!-- Page numbers -->
@@ -46,14 +47,7 @@
                 :aria-current="nav.index === currentPage ? 'page' : undefined"
                 :aria-label="nav.index === -1 ? undefined : `Go to page ${nav.index + 1}`"
             >
-                <wwLayoutItemContext v-if="content.paginatorText" is-repeat :index="index">
-                    <wwElement
-                        v-bind="content.paginatorText"
-                        :ww-props="{ text: nav.label }"
-                        :states="nav.states"
-                    />
-                </wwLayoutItemContext>
-                <span v-else>{{ nav.label }}</span>
+                {{ nav.label }}
             </button>
 
             <!-- Next button -->
@@ -65,8 +59,9 @@
                 :style="buttonStyle"
                 aria-label="Next page"
             >
-                <wwObject v-if="content.paginatorNext" v-bind="content.paginatorNext" />
-                <span v-else>&rsaquo;</span>
+                <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
             </button>
         </nav>
 

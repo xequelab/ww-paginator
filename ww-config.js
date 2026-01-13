@@ -181,27 +181,6 @@ export default {
             defaultValue: true,
         },
 
-        // === CUSTOM ELEMENTS ===
-        paginatorText: {
-            hidden: true,
-            defaultValue: { isWwObject: true, type: 'ww-text' },
-        },
-        paginatorPrev: {
-            hidden: true,
-            defaultValue: {
-                isWwObject: true,
-                type: 'ww-icon',
-                content: { icon: 'fas fa-chevron-left' },
-            },
-        },
-        paginatorNext: {
-            hidden: true,
-            defaultValue: {
-                isWwObject: true,
-                type: 'ww-icon',
-                content: { icon: 'fas fa-chevron-right' },
-            },
-        },
 
         // === LAYOUT STYLES ===
         gap: {
