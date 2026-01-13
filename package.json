@@ -1,0 +1,31 @@
+{
+    "name": "ww-paginator",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/weweb-assets/ww-paginator"
+    },
+    "version": "4.0.0",
+    "description": "Modern pagination component with items per page selector and advanced customization",
+    "author": "WeWeb Community",
+    "keywords": [
+        "weweb",
+        "pagination",
+        "paginator",
+        "component",
+        "vue3"
+    ],
+    "license": "MIT",
+    "scripts": {
+        "build": "weweb build",
+        "serve": "weweb serve"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "@vue/eslint-config-prettier": "^6.0.0",
+        "@weweb/cli": "latest",
+        "eslint": "^7.7.0",
+        "eslint-plugin-prettier": "^3.1.4",
+        "eslint-plugin-vue": "7.0.0-beta.4",
+        "prettier": "^2.1.2"
+    }
+}
