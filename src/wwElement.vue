@@ -359,39 +359,39 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    gap: var(--gap, 16px);
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
     width: 100%;
-    min-height: 40px;
+    padding: 12px 0;
 }
 
 .items-per-page-selector {
     display: flex;
     align-items: center;
     gap: 8px;
-    flex-shrink: 0;
 
     .selector-label {
-        font-size: 13px;
+        font-size: 14px;
         color: #374151;
         font-weight: 500;
         white-space: nowrap;
     }
 
     .selector-dropdown {
-        padding: 6px 28px 6px 10px;
+        padding: 8px 32px 8px 12px;
         border: 1px solid #d1d5db;
-        border-radius: var(--border-radius, 6px);
+        border-radius: 6px;
         background-color: #ffffff;
         cursor: pointer;
         transition: all 0.2s ease;
         font-family: inherit;
-        font-size: 13px;
+        font-size: 14px;
         appearance: none;
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23374151' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
         background-repeat: no-repeat;
-        background-position: right 8px center;
-        min-width: 60px;
+        background-position: right 10px center;
+        min-width: 70px;
 
         &:hover:not(:disabled) {
             border-color: #9ca3af;
@@ -415,25 +415,26 @@ export default {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 4px;
-    flex: 0 1 auto;
+    gap: 6px;
 }
 
 .pagination-button {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 40px;
-    min-height: 40px;
-    padding: var(--button-padding, 8px 12px);
+    min-width: 44px;
+    min-height: 44px;
+    padding: 10px 14px;
     border: 1px solid;
-    border-radius: var(--border-radius, 6px);
+    border-radius: 6px;
     background-color: #ffffff;
     cursor: pointer;
     transition: all 0.2s ease;
     font-family: inherit;
+    font-size: 14px;
     font-weight: 500;
     user-select: none;
+    line-height: 1;
 
     &:hover:not(:disabled):not(.separator) {
         transform: translateY(-1px);
@@ -481,65 +482,23 @@ export default {
 }
 
 .pagination-info {
-    font-size: 13px;
+    font-size: 14px;
     color: #6b7280;
     font-weight: 500;
     white-space: nowrap;
-    flex-shrink: 0;
 }
 
-// Responsive adjustments
-@media (max-width: 1200px) {
-    .items-per-page-selector .selector-label {
-        display: none; // Esconde o texto em telas menores
-    }
-
+// Responsive
+@media (max-width: 768px) {
     .ww-paginator-wrapper {
-        gap: 12px;
-    }
-}
-
-@media (max-width: 900px) {
-    .ww-paginator-wrapper {
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-direction: column;
+        gap: 16px;
     }
 
-    .items-per-page-selector {
-        order: 1;
-        flex-basis: 100%;
-        justify-content: center;
-
-        .selector-label {
-            display: inline; // Mostra novamente quando empilhado
-        }
-    }
-
-    .ww-paginator {
-        order: 2;
-    }
-
-    .pagination-info {
-        order: 3;
-        flex-basis: 100%;
-        text-align: center;
-    }
-}
-
-@media (max-width: 640px) {
     .pagination-button {
-        min-width: 36px;
-        min-height: 36px;
-        padding: 6px 8px;
-        font-size: 13px;
-    }
-
-    .items-per-page-selector .selector-label {
-        font-size: 12px;
-    }
-
-    .pagination-info {
-        font-size: 12px;
+        min-width: 40px;
+        min-height: 40px;
+        padding: 8px 12px;
     }
 }
 </style>

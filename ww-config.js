@@ -187,7 +187,7 @@ export default {
             label: { en: 'Gap between elements' },
             type: 'Length',
             section: 'style',
-            defaultValue: '16px',
+            defaultValue: '24px',
             options: {
                 unitChoices: [{ value: 'px', label: 'px', min: 0, max: 50 }],
             },
