@@ -380,19 +380,21 @@ export default {
     }
 
     .selector-dropdown {
-        padding: 8px 32px 8px 12px;
-        border: 1px solid #d1d5db;
-        border-radius: 6px;
-        background-color: #ffffff;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        font-family: inherit;
-        font-size: 14px;
-        appearance: none;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23374151' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: right 10px center;
-        min-width: 70px;
+        padding: 10px 32px 10px 12px !important;
+        border: 1px solid #d1d5db !important;
+        border-radius: 6px !important;
+        background-color: #ffffff !important;
+        cursor: pointer !important;
+        transition: all 0.2s ease !important;
+        font-family: inherit !important;
+        font-size: 14px !important;
+        appearance: none !important;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23374151' d='M6 9L1 4h10z'/%3E%3C/svg%3E") !important;
+        background-repeat: no-repeat !important;
+        background-position: right 10px center !important;
+        min-width: 70px !important;
+        height: 44px !important;
+        line-height: 1 !important;
 
         &:hover:not(:disabled) {
             border-color: #9ca3af;
@@ -421,22 +423,23 @@ export default {
 }
 
 .pagination-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 44px;
-    min-height: 44px;
-    padding: 10px 14px;
-    border: 1px solid;
-    border-radius: 6px;
-    background-color: #ffffff;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: 500;
-    user-select: none;
-    line-height: 1;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 44px !important;
+    height: 44px !important;
+    padding: 0 14px !important;
+    border: 1px solid !important;
+    border-radius: 6px !important;
+    background-color: #ffffff !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    font-family: inherit !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    user-select: none !important;
+    line-height: 1 !important;
+    box-sizing: border-box !important;
 
     &:hover:not(:disabled):not(.separator) {
         transform: translateY(-1px);
@@ -479,7 +482,8 @@ export default {
     }
 
     &.pagination-arrow {
-        min-width: 40px;
+        min-width: 44px !important;
+        padding: 0 12px !important;
     }
 }
 
