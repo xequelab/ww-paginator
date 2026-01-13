@@ -373,28 +373,29 @@ export default {
     flex: 0 0 auto !important;
 
     .selector-label {
-        font-size: 14px !important;
+        font-size: 13px !important;
         color: #374151 !important;
         font-weight: 500 !important;
         white-space: nowrap !important;
     }
 
     .selector-dropdown {
-        padding: 10px 32px 10px 12px !important;
+        padding: 6px 28px 6px 10px !important;
         border: 1px solid #d1d5db !important;
         border-radius: 6px !important;
         background-color: #ffffff !important;
         cursor: pointer !important;
         transition: all 0.2s ease !important;
         font-family: inherit !important;
-        font-size: 14px !important;
+        font-size: 13px !important;
         appearance: none !important;
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23374151' d='M6 9L1 4h10z'/%3E%3C/svg%3E") !important;
         background-repeat: no-repeat !important;
-        background-position: right 10px center !important;
-        min-width: 70px !important;
-        height: 44px !important;
+        background-position: right 8px center !important;
+        min-width: 60px !important;
+        height: 36px !important;
         line-height: 1 !important;
+        box-sizing: border-box !important;
 
         &:hover:not(:disabled) {
             border-color: #9ca3af;
@@ -426,16 +427,16 @@ export default {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    min-width: 44px !important;
-    height: 44px !important;
-    padding: 0 14px !important;
+    min-width: 36px !important;
+    height: 36px !important;
+    padding: 0 10px !important;
     border: 1px solid !important;
     border-radius: 6px !important;
     background-color: #ffffff !important;
     cursor: pointer !important;
     transition: all 0.2s ease !important;
     font-family: inherit !important;
-    font-size: 14px !important;
+    font-size: 13px !important;
     font-weight: 500 !important;
     user-select: none !important;
     line-height: 1 !important;
@@ -482,13 +483,13 @@ export default {
     }
 
     &.pagination-arrow {
-        min-width: 44px !important;
-        padding: 0 12px !important;
+        min-width: 36px !important;
+        padding: 0 10px !important;
     }
 }
 
 .pagination-info {
-    font-size: 14px !important;
+    font-size: 13px !important;
     color: #6b7280 !important;
     font-weight: 500 !important;
     white-space: nowrap !important;
