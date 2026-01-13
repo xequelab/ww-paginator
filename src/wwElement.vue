@@ -103,8 +103,41 @@ export default {
             defaultValue: 10
         });
 
-        // State
+        // Storage key for persisting user preference
+        const storageKey = `ww-paginator-limit-${props.uid}`;
+
+        // State - Initialize from localStorage if available
         const selectedLimit = ref(null);
+
+        // Load saved preference from localStorage
+        const loadSavedLimit = () => {
+            try {
+                const saved = localStorage.getItem(storageKey);
+                if (saved) {
+                    const limit = parseInt(saved);
+                    if (!isNaN(limit)) {
+                        selectedLimit.value = limit;
+                        setItemsPerPage(limit);
+                        return limit;
+                    }
+                }
+            } catch (e) {
+                console.warn('Failed to load saved limit from localStorage:', e);
+            }
+            return null;
+        };
+
+        // Save preference to localStorage
+        const saveLimit = (limit) => {
+            try {
+                localStorage.setItem(storageKey, limit.toString());
+            } catch (e) {
+                console.warn('Failed to save limit to localStorage:', e);
+            }
+        };
+
+        // Initialize with saved value
+        loadSavedLimit();
 
         // Editor state
         const isEditing = computed(() => {
@@ -133,7 +166,11 @@ export default {
             () => paginationOptions.value?.limit,
             (newLimit) => {
                 if (newLimit && selectedLimit.value === null) {
-                    selectedLimit.value = newLimit;
+                    // Check if there's a saved value first
+                    const saved = loadSavedLimit();
+                    if (!saved) {
+                        selectedLimit.value = newLimit;
+                    }
                 }
             },
             { immediate: true }
@@ -313,6 +350,9 @@ export default {
 
             // Update component variable
             setItemsPerPage(newLimit);
+
+            // Save to localStorage for persistence
+            saveLimit(newLimit);
 
             if (!props.content.useCustomPagination && props.content.collectionId) {
                 wwLib.wwCollection.setLimit(props.content.collectionId, newLimit);
