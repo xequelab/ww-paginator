@@ -356,26 +356,27 @@ export default {
 
 <style scoped lang="scss">
 .ww-paginator-wrapper {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 16px;
-    width: 100%;
-    padding: 12px 0;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 16px !important;
+    width: 100% !important;
+    padding: 12px 0 !important;
 }
 
 .items-per-page-selector {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    flex: 0 0 auto !important;
 
     .selector-label {
-        font-size: 14px;
-        color: #374151;
-        font-weight: 500;
-        white-space: nowrap;
+        font-size: 14px !important;
+        color: #374151 !important;
+        font-weight: 500 !important;
+        white-space: nowrap !important;
     }
 
     .selector-dropdown {
@@ -411,11 +412,12 @@ export default {
 }
 
 .ww-paginator {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    flex: 0 0 auto !important;
 }
 
 .pagination-button {
@@ -482,10 +484,11 @@ export default {
 }
 
 .pagination-info {
-    font-size: 14px;
-    color: #6b7280;
-    font-weight: 500;
-    white-space: nowrap;
+    font-size: 14px !important;
+    color: #6b7280 !important;
+    font-weight: 500 !important;
+    white-space: nowrap !important;
+    flex: 0 0 auto !important;
 }
 
 // Responsive
