@@ -1,5 +1,5 @@
 <template>
-    <div class="ww-paginator-wrapper">
+    <div class="ww-paginator-wrapper" :style="containerStyle">
         <!-- Items per page selector -->
         <div v-if="content.showItemsPerPageSelector" class="items-per-page-selector">
             <span class="selector-label">{{ itemsPerPageLabel }}</span>
@@ -17,7 +17,7 @@
         </div>
 
         <!-- Pagination controls -->
-        <nav class="ww-paginator" role="navigation" :style="containerStyle">
+        <nav class="ww-paginator" role="navigation">
             <!-- Previous button -->
             <button
                 class="pagination-button pagination-arrow"
@@ -357,21 +357,24 @@ export default {
 <style scoped lang="scss">
 .ww-paginator-wrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 16px;
+    justify-content: space-between;
+    gap: var(--gap, 16px);
     width: 100%;
+    flex-wrap: wrap;
 }
 
 .items-per-page-selector {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
 
     .selector-label {
         font-size: 14px;
         color: #374151;
         font-weight: 500;
+        white-space: nowrap;
     }
 
     .selector-dropdown {
@@ -410,6 +413,7 @@ export default {
     align-items: center;
     justify-content: center;
     gap: 4px;
+    flex: 1;
 }
 
 .pagination-button {
@@ -477,33 +481,36 @@ export default {
     font-size: 14px;
     color: #6b7280;
     font-weight: 500;
+    white-space: nowrap;
 }
 
 // Responsive adjustments
-@media (max-width: 640px) {
-    .ww-paginator {
+@media (max-width: 768px) {
+    .ww-paginator-wrapper {
+        flex-direction: column;
         gap: 12px;
     }
 
     .items-per-page-selector {
-        flex-direction: column;
-        gap: 8px;
-        text-align: center;
+        width: 100%;
+        justify-content: center;
+    }
 
-        .selector-dropdown {
-            width: 100%;
-            max-width: 200px;
-        }
+    .ww-paginator {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .pagination-info {
+        width: 100%;
+        text-align: center;
+        font-size: 13px;
     }
 
     .pagination-button {
         min-width: 36px;
         min-height: 36px;
         padding: 6px 10px;
-        font-size: 13px;
-    }
-
-    .pagination-info {
         font-size: 13px;
     }
 }
