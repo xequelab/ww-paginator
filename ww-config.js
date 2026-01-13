@@ -142,7 +142,7 @@ export default {
             },
             type: 'Text',
             section: 'settings',
-            defaultValue: 'Items per page:',
+            defaultValue: 'Itens por página:',
             bindable: true,
             multiLang: true,
         },

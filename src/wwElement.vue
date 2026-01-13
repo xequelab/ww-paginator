@@ -214,7 +214,7 @@ export default {
         });
 
         const itemsPerPageLabel = computed(() => {
-            return props.content.itemsPerPageLabel || 'Items per page:';
+            return props.content.itemsPerPageLabel || 'Itens por página:';
         });
 
         const paginationInfoText = computed(() => {
@@ -225,7 +225,7 @@ export default {
                 paginationOptions.value.total
             );
             const total = paginationOptions.value.total;
-            return `Showing ${start}-${end} of ${total}`;
+            return `Exibindo ${start}-${end} de ${total}`;
         });
 
         // Styles
@@ -362,33 +362,36 @@ export default {
     justify-content: space-between;
     gap: var(--gap, 16px);
     width: 100%;
-    flex-wrap: wrap;
+    min-height: 40px;
 }
 
 .items-per-page-selector {
     display: flex;
     align-items: center;
     gap: 8px;
+    flex-shrink: 0;
 
     .selector-label {
-        font-size: 14px;
+        font-size: 13px;
         color: #374151;
         font-weight: 500;
         white-space: nowrap;
     }
 
     .selector-dropdown {
-        padding: 6px 32px 6px 12px;
+        padding: 6px 28px 6px 10px;
         border: 1px solid #d1d5db;
         border-radius: var(--border-radius, 6px);
         background-color: #ffffff;
         cursor: pointer;
         transition: all 0.2s ease;
         font-family: inherit;
+        font-size: 13px;
         appearance: none;
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23374151' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
         background-repeat: no-repeat;
-        background-position: right 10px center;
+        background-position: right 8px center;
+        min-width: 60px;
 
         &:hover:not(:disabled) {
             border-color: #9ca3af;
@@ -413,7 +416,7 @@ export default {
     align-items: center;
     justify-content: center;
     gap: 4px;
-    flex: 1;
+    flex: 0 1 auto;
 }
 
 .pagination-button {
@@ -478,40 +481,51 @@ export default {
 }
 
 .pagination-info {
-    font-size: 14px;
+    font-size: 13px;
     color: #6b7280;
     font-weight: 500;
     white-space: nowrap;
+    flex-shrink: 0;
 }
 
 // Responsive adjustments
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .ww-paginator-wrapper {
-        flex-direction: column;
-        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .items-per-page-selector {
-        width: 100%;
+        order: 1;
+        flex-basis: 100%;
         justify-content: center;
     }
 
     .ww-paginator {
-        width: 100%;
-        justify-content: center;
+        order: 2;
     }
 
     .pagination-info {
-        width: 100%;
+        order: 3;
+        flex-basis: 100%;
         text-align: center;
-        font-size: 13px;
     }
+}
 
+@media (max-width: 640px) {
     .pagination-button {
         min-width: 36px;
         min-height: 36px;
-        padding: 6px 10px;
+        padding: 6px 8px;
         font-size: 13px;
+    }
+
+    .items-per-page-selector .selector-label {
+        font-size: 12px;
+    }
+
+    .pagination-info {
+        font-size: 12px;
     }
 }
 </style>
