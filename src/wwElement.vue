@@ -95,6 +95,14 @@ export default {
     },
     emits: ['trigger-event', 'update:content'],
     setup(props, { emit }) {
+        // Component variable for items per page
+        const { value: itemsPerPage, setValue: setItemsPerPage } = wwLib.wwVariable.useComponentVariable({
+            uid: props.uid,
+            name: 'itemsPerPage',
+            type: 'number',
+            defaultValue: 10
+        });
+
         // State
         const selectedLimit = ref(null);
 
@@ -244,9 +252,9 @@ export default {
         }));
 
         const activeButtonStyle = computed(() => ({
-            backgroundColor: props.content.activeButtonBackground || '#3b82f6',
-            color: props.content.activeButtonColor || '#ffffff',
-            borderColor: props.content.activeButtonBorder || '#3b82f6',
+            '--active-bg': props.content.activeButtonBackground || '#3b82f6',
+            '--active-color': props.content.activeButtonColor || '#ffffff',
+            '--active-border': props.content.activeButtonBorder || '#3b82f6',
             fontSize: props.content.buttonFontSize || '13px'
         }));
 
@@ -303,6 +311,9 @@ export default {
 
             const newLimit = parseInt(selectedLimit.value);
 
+            // Update component variable
+            setItemsPerPage(newLimit);
+
             if (!props.content.useCustomPagination && props.content.collectionId) {
                 wwLib.wwCollection.setLimit(props.content.collectionId, newLimit);
                 wwLib.wwCollection.setOffset(props.content.collectionId, 0);
@@ -334,6 +345,7 @@ export default {
         return {
             isEditing,
             selectedLimit,
+            itemsPerPage,
             paginationOptions,
             nbPage,
             currentPage,
@@ -433,7 +445,6 @@ export default {
     padding: 0 10px !important;
     border: 1px solid !important;
     border-radius: 6px !important;
-    background-color: #ffffff !important;
     cursor: pointer !important;
     transition: all 0.2s ease !important;
     font-family: inherit !important;
@@ -481,6 +492,9 @@ export default {
     &.active {
         font-weight: 600 !important;
         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+        background-color: var(--active-bg) !important;
+        color: var(--active-color) !important;
+        border-color: var(--active-border) !important;
     }
 
     &.pagination-arrow {
