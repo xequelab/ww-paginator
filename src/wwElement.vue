@@ -489,7 +489,17 @@ export default {
 }
 
 // Responsive adjustments
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
+    .items-per-page-selector .selector-label {
+        display: none; // Esconde o texto em telas menores
+    }
+
+    .ww-paginator-wrapper {
+        gap: 12px;
+    }
+}
+
+@media (max-width: 900px) {
     .ww-paginator-wrapper {
         flex-wrap: wrap;
         justify-content: center;
@@ -499,6 +509,10 @@ export default {
         order: 1;
         flex-basis: 100%;
         justify-content: center;
+
+        .selector-label {
+            display: inline; // Mostra novamente quando empilhado
+        }
     }
 
     .ww-paginator {
