@@ -355,8 +355,14 @@ export default {
             saveLimit(newLimit);
 
             if (!props.content.useCustomPagination && props.content.collectionId) {
-                wwLib.wwCollection.setLimit(props.content.collectionId, newLimit);
-                wwLib.wwCollection.setOffset(props.content.collectionId, 0);
+                // Note: wwLib.wwCollection.setLimit may not exist in all WeWeb versions
+                // We rely on the limitChange event to update the collection limit externally
+                if (typeof wwLib.wwCollection.setLimit === 'function') {
+                    wwLib.wwCollection.setLimit(props.content.collectionId, newLimit);
+                }
+                if (typeof wwLib.wwCollection.setOffset === 'function') {
+                    wwLib.wwCollection.setOffset(props.content.collectionId, 0);
+                }
             }
 
             emit('trigger-event', {
